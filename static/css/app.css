@@ -5,8 +5,8 @@ html, body {
 
 body {
 	padding-top: 20px;
-    background-color: black;
-    background-image: url(http://i0.wp.com/devleader.ca/wp-content/uploads/2014/01/php_code.jpg);
+    background-color: lightblue;;
+    background-image: url('/static/StaticMapImage.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;

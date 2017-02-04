@@ -1,14 +1,30 @@
-from flask import Flask, render_template
-import requests
+from flask import Flask, request, g, render_template
+import sqlite3
 import os
+#import pandas as pd
 
 app = Flask(__name__)
+
+columnsthis = ['Email', 'Address']
+#df = pd.DataFrame(columns=columnsthis)
 
 @app.route("/index.html", methods = ["GET", "POST"])
 @app.route("/index", methods = ["GET", "POST"])
 @app.route("/", methods = ["GET", "POST"])
 def homepage():
-	return render_template("index.html")
+    if request.method == "GET":
+        facilities = data.get_data()
+        latitudes = []
+        longitudes = []
+        for facility in facilities:
+            latitudes = facility['lat']
+            longitudes = facility['lng']
+        return render_template("index.html", latitudes = latitudes, longitudes = longitudes)
+    else:
+        email = request.form['email_form']
+        df2 = df.append({'Email': email, 'Address': "placeholder address"}, ignore_index=True)
+        print df2
+    return render_template("index.html", facilities = facilities)
 
 @app.errorhandler(404)
 def page_not_found(error):
