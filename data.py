@@ -46,7 +46,7 @@ def get_picture(search_query):
     print search_url
     soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
     soup2 = soup.findAll('p', {'class':'span3 pull-right'})
-    soup3 = soup2.findAll('img')
+    soup3 = soup.findAll('img')
     print(soup3)
     
 get_picture('carol eisner monumental sculptures at prospect park')
