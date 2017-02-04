@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib2 import urlopen, quote
 import xml.etree.ElementTree as ET
+import json
 
 def get_data():
     url = "https://www.nycgovparks.org/bigapps/DPR_PublicArt_001.xml"
@@ -9,10 +10,12 @@ def get_data():
     
     root = ET.fromstring(xml_contents)
     
-    facilities = []
+    facilities = {}
     
     borough_dict = {'X':'Bronx', 'B':'Brooklyn', 'M':'Manhattan', 'Q':'Queens', 'R':'Staten Island'}
     
+    i = 0
+
     for facility in root.findall('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}facility'):
         child_facility = {}
         name = facility.find('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}name')
@@ -31,8 +34,14 @@ def get_data():
         child_facility['lng'] = float(lng.text)
         child_facility['description'] = description.text
         child_facility['borough'] = borough_dict[borough.text]
-        facilities.append(child_facility)
+        facilities[i] = child_facility
+        i = i + 1
+
     return facilities
+    #jsonarray = json.dumps(facilities)
+    #f = open('facilities.json', 'w')
+    #f.write(jsonarray)
+    #f.close()
         
         
 ##def get_picture(facility):

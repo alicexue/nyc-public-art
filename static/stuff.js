@@ -1,3 +1,4 @@
+
 function myMap() {
 var mapProp= {
     center:new google.maps.LatLng(40.728857, -73.960074),
@@ -6,8 +7,8 @@ var mapProp= {
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 //add markers
-//var myLatLng = new google.maps.LatLng(latitudes[i], longitudes[i]);
-var myLatLng = {lat: 40.728857, lng: -73.960074};
+var myLatLng = {lat: {{latitudes[0]}}, lng: {{longitudes[0]}}};
+console.log(myLatLng)
 var marker = new google.maps.Marker({
   position: myLatLng,
   map: map,
