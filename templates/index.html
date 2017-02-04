@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title> Public Art Finder</title>
+    <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARHssahiNcsY3V-T_yX5J0PlP4nrmGRwA&callback=initMap">
+		</script>
+		<script src="map.js"></script>
+	  <link rel="stylesheet" type="text/css" href="map.css">
+</head>
+<body>
+	<body background="resources/sickpic.jpg">
+	<div class="container">
+  		<div class="jumbotron">
+			<h1>PubArt: Where Art Meets Community!</h1>
+		</div>
+		<div id="googleMap" style="width:100%;height:400px;"></div>
+			<script>
+			function initMap() {
+			  var map = new google.maps.Map(document.getElementById('map'), {
+			    zoom: 11,
+			    center: {lat: 40.728857, lng: -73.960074},
+			  });
+			    
+			  // don't let people pan past NYC
+			  var allowedBounds = new google.maps.LatLngBounds(
+			    new google.maps.LatLng(40.488482, -74.267916),
+			    new google.maps.LatLng(41.296556, -73.653525)
+			  );
+			  var lastValidCenter = map.getCenter();
+			
+			
+			  map.addListener('center_changed', function() {
+			       if (allowedBounds.contains(map.getCenter())) {
+			  		 		lastValidCenter = map.getCenter();
+			       }
+						 else { 
+			         // not valid anymore => return to last valid position
+			         map.panTo(lastValidCenter);      
+			       }
+			  });
+}
+			</script>
+			
+			
+			<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+			
+
+
+			<div id="map"> hello</div>
+			<!--Maybe, once youve entered your address or allowed your current location,
+				 a carousel of pictures of the art around you -->
+				 
+		  		<h3>Sign up for updates about the art around you: </h3>
+		      		<div class="col-xs-4">
+						<form class="form-inline">
+							<input type="email" class="form-control" id="email" placeholder="Enter email">
+				      		<button type="submit" class="btn btn-default">Submit</button>
+				      	</form>
+				    </div>
+			    </div>
+		</div>
+	</div>
+</body>
+
