@@ -14,7 +14,7 @@
   	<div class="jumbotron" style="background-color:transparent !important;">
 			<h1 style="color:white; font-family: Arial Black; text-align: center">PubArt: Where Art Meets Community!</h1>
     </div>
-  	<div class="container" style ='background-color: #2ba6cb;'>
+  	<div class="jumbotron" style ='background-color: #9C67BF;'>
   		<div class="row">
       	<div class="col-sm-6">
           <input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -29,7 +29,15 @@
     				</div>
     		</div>
     	</div>
-  	</div>
+      <h3 style="color:black;">Sign up for updates about the art around you: </h3>
+    	<div class="col-xs-4">
+    		<form class="form-inline" role="form" id="user" method="POST">
+    			<input type="email" class="form-control" id="email_form" placeholder="Enter email" name="email_form">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
     <script src="static/stuff.js" async defer></script>
   			<!--Maybe, once youve entered your address or allowed your current location,
@@ -159,15 +167,4 @@ function initAutocomplete() {
 }
 
 </script>
-  	<h3 style="color:black;">Sign up for updates about the art around you: </h3>
-  	<div class="col-xs-4">
-  		<form class="form-inline" role="form" id="user" method="POST">
-  			<input type="email" class="form-control" id="email_form" placeholder="Enter email" name="email_form">
-        		<button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div>
-  </div>
-
-    </div>
-  </div>
 </body>
