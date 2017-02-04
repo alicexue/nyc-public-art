@@ -32,4 +32,7 @@ def page_not_found(error):
 	return "Sorry, this page was not found.", 404
 
 if __name__ == "__main__":
-    app.run(host=os.getenv('IP', 'O.0.0.0'), port=int(os.getenv('PORT', 8080)))
+    app.debug = True
+    app.secret_key="Don't store this on github"
+    app.run(host = '0.0.0.0', port = 5000)
+    #app.run(host=os.getenv('IP', 'O.0.0.0'), port=int(os.getenv('PORT', 8080)))
