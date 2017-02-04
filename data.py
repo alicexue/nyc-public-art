@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib2 import urlopen, quote
 import xml.etree.ElementTree as ET
+import json
 
 def get_data():
     url = "https://www.nycgovparks.org/bigapps/DPR_PublicArt_001.xml"
@@ -9,9 +10,10 @@ def get_data():
 
     root = ET.fromstring(xml_contents)
 
-    facilities = []
+    facilities = {}
 
     borough_dict = {'X':'Bronx', 'B':'Brooklyn', 'M':'Manhattan', 'Q':'Queens', 'R':'Staten Island'}
+
 
     for facility in root.findall('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}facility'):
         child_facility = {}
@@ -31,29 +33,16 @@ def get_data():
         child_facility['lng'] = float(lng.text)
         child_facility['description'] = description.text
         child_facility['borough'] = borough_dict[borough.text]
-        facilities.append(child_facility)
+        child_facility['photo'] = get_picture(name.text, artist.text)
+        facilities[i] = child_facility
+        i = i + 1
     return facilities
 
-
-##def get_picture(facility):
-
-
-#     #search_query = #search_query = facility['name'] + ' ' + facility['author']
-# def createImgTag(soupResult):
-#     beginning = soupResult[:9]
-#     end = soupResult[10:]
-#     print beginning
-#     print end
-#
-# def get_picture(search_query):
-#     query_quote = quote(search_query)
-#     search_url = 'https://www.nycgovparks.org/art/' + query_quote
-#     soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
-#     soup2 = soup.findAll('img')
-#     print soup2[4]
-# createImgTag()
-#
-# get_picture('carol eisner monumental sculptures at prospect park')
-# #https://www.nycgovparks.org/sub_things_to_do/attractions/public_art/images/fullsize/Carole_Eisner_on_Broadway.jpg
-# get_picture('Untitled (Blind Idealism Is...) barbara kruger')
-# get_picture('Dee Briggs in Foley Square Dee Briggs')
+def get_picture(name, artist):
+    search_query = name + ' ' + artist
+    query_quote = quote(search_query)
+    search_url = 'https://www.nycgovparks.org/art/' + query_quote
+    soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
+    soup2 = soup.findAll('img')
+    soup2[4]['src'] = 'https://www.nycgovparks.org' + soup2[4]['src']
+    return str(soup2[4])
