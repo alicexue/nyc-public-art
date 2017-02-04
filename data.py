@@ -43,10 +43,10 @@ def get_data():
 def get_picture(search_query):
     query_quote = quote(search_query)
     search_url = 'https://www.nycgovparks.org/art/' + query_quote
-    print search_url
     soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
-    soup2 = soup.findAll('p', {'class':'span3 pull-right'})
-    soup3 = soup.findAll('img')
-    print(soup3)
+    soup2 = soup.findAll('img')
+    print soup2[4]
     
 get_picture('carol eisner monumental sculptures at prospect park')
+get_picture('Untitled (Blind Idealism Is...) barbara kruger')
+get_picture('Dee Briggs in Foley Square Dee Briggs')

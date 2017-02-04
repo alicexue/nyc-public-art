@@ -1,6 +1,7 @@
 from flask import Flask, request, g, render_template
 import sqlite3
 import os
+import data
 #import pandas as pd
 
 app = Flask(__name__)
@@ -22,8 +23,8 @@ def homepage():
         return render_template("index.html", latitudes = latitudes, longitudes = longitudes)
     else:
         email = request.form['email_form']
-        df2 = df.append({'Email': email, 'Address': "placeholder address"}, ignore_index=True)
-        print df2
+       # df2 = df.append({'Email': email, 'Address': "placeholder address"}, ignore_index=True)
+        #print df2
     return render_template("index.html", facilities = facilities)
 
 @app.errorhandler(404)
