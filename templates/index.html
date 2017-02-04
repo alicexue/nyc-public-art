@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-6">
           <div id="artPic" style="width:100%;height:400px;">
-            <img src="/static/ArtPic.jpg" class="img-responsive" >
+            <img id="art-photo" src="/static/ArtPic.jpg" class="img-responsive" >
             <h4 style="color:black;">This is a temp art piece by Blah Blah and heres a description</h4>
           </div>
         </div>
@@ -36,7 +36,7 @@ var mapProp = {
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 
-jQuery.get('http://localhost:2000/facilities.json',function(facilities){
+jQuery.get('http://localhost:4000/facilities.json',function(facilities){
     for (i=0;i<Object.keys(facilities).length;i++) {
     	//add markers
 		var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
@@ -45,16 +45,24 @@ jQuery.get('http://localhost:2000/facilities.json',function(facilities){
   		map: map,
   		title: facilities[i]['name']
 		});
-		content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>' + facilities[i]['description'] + '<center>' + facilities[i]['photo'] + '</center>'
+		content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>' 
+
+		// + facilities[i]['description'] + '<center>' + facilities[i]['photo'] + '</center>'
+		photo_link = facilities[i]['photo'];
 		var infowindow = new google.maps.InfoWindow({
     		content: content
  		 });
- 		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+ 		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow,photo_link){ 
     	return function() {
         	infowindow.setContent(content);
         	infowindow.open(map,marker);
+        	console.log(photo_link)
+        	console.log(photo_link.substr(0,photo_link.length - 2))
+        	console.log(document.getElementById("art-photo"))
+        	o_html = photo_link.substr(0,photo_link.length - 2) + " id = \"art-photo\" class=\"img-responsive\"/>";
+        	document.getElementById("art-photo").outerHTML = o_html;
     		};
-		})(marker,content,infowindow));  
+		})(marker,content,infowindow,photo_link));  
     }
 });
 
