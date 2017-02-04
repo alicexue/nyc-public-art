@@ -89,38 +89,4 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
-
-  jQuery.get('http://localhost:8080/facilities.json',function(facilities){
-      for (i=0;i<Object.keys(facilities).length;i++) {
-      	//add markers
-  		var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
-  		var marker = new google.maps.Marker({
-    		position: myLatLng,
-    		map: map,
-    		title: facilities[i]['name']
-  		});
-  		content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>'
-  		photo_link = facilities[i]['photo']
-  		photo_description = facilities[i]['description']
-  		var infowindow = new google.maps.InfoWindow({
-      		content: content
-   		 });
-   		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow,photo_link,photo_description){
-      	return function() {
-          	infowindow.setContent(content);
-          	infowindow.open(map,marker);
-          	console.log(photo_link)
-          	console.log(photo_link.substr(0,photo_link.length - 2))
-          	console.log(document.getElementById("art-photo"))
-          	o_html = photo_link.substr(0,photo_link.length - 2) + " id = \"art-photo\" class=\"img-responsive\"/>";
-          	document.getElementById("art-photo").outerHTML = o_html;
-          	document.getElementById("art-description").innerHTML = photo_description;
-      		};
-  		})(marker,content,infowindow,photo_link,photo_description));
-      }
-  });
-
-
-
 }

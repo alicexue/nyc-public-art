@@ -14,7 +14,7 @@ def get_data():
 
     borough_dict = {'X':'Bronx', 'B':'Brooklyn', 'M':'Manhattan', 'Q':'Queens', 'R':'Staten Island'}
 
-
+    i = 0
     for facility in root.findall('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}facility'):
         child_facility = {}
         name = facility.find('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}name')
