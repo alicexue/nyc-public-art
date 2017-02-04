@@ -36,7 +36,7 @@ var mapProp = {
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 
-jQuery.get('http://localhost:3000/facilities.json',function(facilities){
+jQuery.get('http://localhost:2000/facilities.json',function(facilities){
     for (i=0;i<Object.keys(facilities).length;i++) {
     	//add markers
 		var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
@@ -45,7 +45,7 @@ jQuery.get('http://localhost:3000/facilities.json',function(facilities){
   		map: map,
   		title: facilities[i]['name']
 		});
-		content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>' + facilities[i]['description']
+		content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>' + facilities[i]['description'] + '<center>' + facilities[i]['photo'] + '</center>'
 		var infowindow = new google.maps.InfoWindow({
     		content: content
  		 });

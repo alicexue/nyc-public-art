@@ -34,28 +34,23 @@ def get_data():
         child_facility['lng'] = float(lng.text)
         child_facility['description'] = description.text
         child_facility['borough'] = borough_dict[borough.text]
+        child_facility['photo'] = get_picture(name.text, artist.text)
         facilities[i] = child_facility
         i = i + 1
-
     return facilities
-    #jsonarray = json.dumps(facilities)
-    #f = open('facilities.json', 'w')
-    #f.write(jsonarray)
-    #f.close()
         
         
-##def get_picture(facility):
-
-
-    #search_query = #search_query = facility['name'] + ' ' + facility['author']
+def get_picture(name, artist):
+    search_query = name + ' ' + artist
     
-def get_picture(search_query):
+    #def get_picture(search_query):
     query_quote = quote(search_query)
     search_url = 'https://www.nycgovparks.org/art/' + query_quote
     soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
     soup2 = soup.findAll('img')
-    print soup2[4]
+    soup2[4]['src'] = 'https://www.nycgovparks.org' + soup2[4]['src']
+    return str(soup2[4])
     
-get_picture('carol eisner monumental sculptures at prospect park')
-get_picture('Untitled (Blind Idealism Is...) barbara kruger')
-get_picture('Dee Briggs in Foley Square Dee Briggs')
+#get_picture('carol eisner monumental sculptures at prospect park')
+#get_picture('Untitled (Blind Idealism Is...) barbara kruger')
+#get_picture('Dee Briggs in Foley Square Dee Briggs')
