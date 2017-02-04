@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from urllib2 import urlopen
+from urllib2 import urlopen, quote
 import xml.etree.ElementTree as ET
 
 def get_data():
@@ -41,10 +41,12 @@ def get_data():
     #search_query = #search_query = facility['name'] + ' ' + facility['author']
     
 def get_picture(search_query):
-    search_url = 'https://www.nycgovparks.org/art/' + search_query
+    query_quote = quote(search_query)
+    search_url = 'https://www.nycgovparks.org/art/' + query_quote
     print search_url
-    url = urllib2.quote(search_url)
-    soup = BeautifulSoup(urlopen(url).read(), 'html.parser')
-    print(soup)
+    soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
+    soup2 = soup.findAll('p', {'class':'span3 pull-right'})
+    soup3 = soup2.findAll('img')
+    print(soup3)
     
 get_picture('carol eisner monumental sculptures at prospect park')
