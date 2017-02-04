@@ -6,13 +6,13 @@ def get_data():
     url = "https://www.nycgovparks.org/bigapps/DPR_PublicArt_001.xml"
     s = urlopen(url)
     xml_contents = s.read()
-    
+
     root = ET.fromstring(xml_contents)
-    
+
     facilities = []
-    
+
     borough_dict = {'X':'Bronx', 'B':'Brooklyn', 'M':'Manhattan', 'Q':'Queens', 'R':'Staten Island'}
-    
+
     for facility in root.findall('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}facility'):
         child_facility = {}
         name = facility.find('{http://www.nycgovparks.org/bigapps/desc/DPR_PublicArt_001.txt}name')
@@ -33,20 +33,27 @@ def get_data():
         child_facility['borough'] = borough_dict[borough.text]
         facilities.append(child_facility)
     return facilities
-        
-        
+
+
 ##def get_picture(facility):
 
 
-    #search_query = #search_query = facility['name'] + ' ' + facility['author']
-    
-def get_picture(search_query):
-    query_quote = quote(search_query)
-    search_url = 'https://www.nycgovparks.org/art/' + query_quote
-    soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
-    soup2 = soup.findAll('img')
-    print soup2[4]
-    
-get_picture('carol eisner monumental sculptures at prospect park')
-get_picture('Untitled (Blind Idealism Is...) barbara kruger')
-get_picture('Dee Briggs in Foley Square Dee Briggs')
+#     #search_query = #search_query = facility['name'] + ' ' + facility['author']
+# def createImgTag(soupResult):
+#     beginning = soupResult[:9]
+#     end = soupResult[10:]
+#     print beginning
+#     print end
+#
+# def get_picture(search_query):
+#     query_quote = quote(search_query)
+#     search_url = 'https://www.nycgovparks.org/art/' + query_quote
+#     soup = BeautifulSoup(urlopen(search_url).read(), 'html.parser')
+#     soup2 = soup.findAll('img')
+#     print soup2[4]
+# createImgTag()
+#
+# get_picture('carol eisner monumental sculptures at prospect park')
+# #https://www.nycgovparks.org/sub_things_to_do/attractions/public_art/images/fullsize/Carole_Eisner_on_Broadway.jpg
+# get_picture('Untitled (Blind Idealism Is...) barbara kruger')
+# get_picture('Dee Briggs in Foley Square Dee Briggs')
