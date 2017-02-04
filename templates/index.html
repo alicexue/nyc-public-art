@@ -4,12 +4,10 @@
     <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <script type="text/javascript" src="/static/js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="/static/js/sijax/sijax.js"></script>
-</head>
+</head>						
 <body style="background-image: url('http://www.theplunge.com/images/new_york_city.jpg')">
+
 	<div class="container" >
   		<div class="jumbotron" style="background-color:transparent !important;">
 			<h1 style="color:white; font-family: Arial Black; text-align: center">PubArt: Where Art Meets Community!</h1>
@@ -17,8 +15,8 @@
 	<div class="container" style ='background-color: #2ba6cb;'>
 		<div class="row">
     		<div class="col-sm-6">
-  				<div id="googleMap" style="width:100%;height:400px;"></div>
-  			</div>
+		<input id="pac-input" class="controls" type="text" placeholder="Search Box"></div>
+  			<div id="googleMap" style="width:100%;height:400px;"> </div>
   			<div class="col-sm-6">
   				<div id="artPic" style="width:100%;height:400px;">
   					<img src="/static/ArtPic.jpg" class="img-responsive" >
@@ -42,5 +40,6 @@
 				    </div>
 			    </div>
 		</div>
+<script src="static/js/map.js" async defer></script>
 	</div>
 </body>
