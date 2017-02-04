@@ -19,8 +19,8 @@
       	<div class="col-sm-6">
           <input id="pac-input" class="controls" type="text" placeholder="Search Box">
       		<div id="googleMap" style="width:100%;height:400px;">
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARHssahiNcsY3V-T_yX5J0PlP4nrmGRwA&libraries=places&callback=initAutocomplete" async defer></script>
-        </div>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5lDzRR0Cr5Lr6iJKmsQVVn0UZcysBrhg&libraries=places&callback=initAutocomplete" async defer></script>
+          </div>
         </div>
     		<div class="col-sm-6">
     		    <div id="artPic" style="width:100%;height:400px;">
@@ -31,13 +31,8 @@
     	</div>
   	</div>
 
-    <script src="static/stuff.js" async defer></script>
-  			<!--Maybe, once youve entered your address or allowed your current location,
-  				 a carousel of pictures of the art around you -->
 <script>
-
 function initAutocomplete() {
-  console.log("6");
   var mapProp= {
       center:new google.maps.LatLng(40.728857, -73.960074),
       zoom:11,
@@ -47,19 +42,19 @@ function initAutocomplete() {
   jQuery.get('http://localhost:8080/facilities.json',function(facilities){
       for (i=0;i<Object.keys(facilities).length;i++) {
         //add markers
-      var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: facilities[i]['name']
-      });
-      content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>'
-      photo_link = facilities[i]['photo']
-      photo_description = facilities[i]['description']
-      var infowindow = new google.maps.InfoWindow({
-          content: content
-       });
-      google.maps.event.addListener(marker,'click', (function(marker,content,infowindow,photo_link,photo_description){
+        var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: facilities[i]['name']
+        });
+        content = '<p><b>' + facilities[i]['name'] + '</b></p><p>' + facilities[i]['artist'] + '</p><p>' + facilities[i]['from_date'] + ' to ' + facilities[i]['to_date'] + '</p>'
+        photo_link = facilities[i]['photo']
+        photo_description = facilities[i]['description']
+        var infowindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addDomListener(marker,'click', (function(marker,content,infowindow,photo_link,photo_description){
         return function() {
             infowindow.setContent(content);
             infowindow.open(map,marker);
@@ -79,18 +74,12 @@ function initAutocomplete() {
     new google.maps.LatLng(41.296556, -73.653525),
   );
   var lastValidCenter = map.getCenter();
-  console.log("6");
-
 
   map.addListener('center_changed', function() {
-    console.log("6")
-
        if (allowedBounds.contains(map.getCenter())) {
           lastValidCenter = map.getCenter();
        }
        else {
-         console.log("6")
-
          // not valid anymore => return to last valid position
          map.panTo(lastValidCenter);
        }
@@ -155,7 +144,6 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
 }
 
 </script>
@@ -165,9 +153,6 @@ function initAutocomplete() {
   			<input type="email" class="form-control" id="email_form" placeholder="Enter email" name="email_form">
         		<button type="submit" class="btn btn-default">Submit</button>
       </form>
-    </div>
-  </div>
-
     </div>
   </div>
 </body>
