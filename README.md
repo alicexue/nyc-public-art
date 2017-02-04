@@ -1,46 +1,20 @@
+## Inspiration
+We've all been influenced by art throughout our lives -- in museums, in homes, and most importantly, in nature. We aimed to make the beauty of art, especially temporary exhibits, more accessible to everyone.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+## What it does
+PubArt is a website that displays temporary art exhibits in New York City on a map so people can browse and visit pieces that especially speak to them.
 
+## How we built it
+We used the Google Maps API, NYC Open Data, Flask, Python, and HTML to organize and display data related to art exhibits.
 
-Welcome to your Python project on Cloud9 IDE!
+## Challenges we ran into
+Learning the Google Maps API proved more difficult than we expected, but we were able to eventually figure out how to use it successfully.
 
-To show what Cloud9 can do, we added a basic sample web application to this
-workspace, from the excellent Python tutorial _Learning Python the Hard Way_.
-We skipped ahead straight to example 50 which teaches how to build a web
-application.
+## Accomplishments that we're proud of
+We are especially proud of creating a working email system for users to sign up and receive art-related emails.
 
-If you've never looked at the tutorial or are interested in learning Python,
-go check it out. It's a great hands-on way for learning all about programming
-in Python.
+## What we learned
+We learned how to use APIs and link images, text, and maps to convey a message within a website framework.
 
-* _Learning Python The Hard Way_, online version and videos: 
-http://learnpythonthehardway.org/book/
-
-* Full book: http://learnpythonthehardway.org
-
-## Starting from the Terminal
-
-To try the example application, type the following in the terminal:
-
-```
-cd ex50
-python bin/app.py
-```
-
-Alternatively, open the file in ex50/bin and click the green Run
-button!
-
-## Configuration
-
-You can configure your Python version and `PYTHONPATH` used in
-Cloud9 > Preferences > Project Settings > Language Support.
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
-To watch some training videos, visit http://www.youtube.com/user/c9ide.
+## What's next for PubArt
+We would love to make PubArt a Pub-licly available website for all New Yorkers to use and enjoy.
