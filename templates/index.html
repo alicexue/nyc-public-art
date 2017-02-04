@@ -49,7 +49,7 @@ function initAutocomplete() {
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
   console.log("6");
-  jQuery.get('http://localhost:8080/facilities.json',function(facilities){
+  jQuery.get('./facilities.json',function(facilities){
       for (i=0;i<Object.keys(facilities).length;i++) {
         //add markers
         var myLatLng = {lat: facilities[i]['lat'], lng: facilities[i]['lng']};
