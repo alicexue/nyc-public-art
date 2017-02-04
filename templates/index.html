@@ -23,11 +23,13 @@
           </div>
         </div>
     		<div class="col-sm-6">
-    		    <div id="artPic" style="width:100%;height:400px;">
-    					<img id = "art-photo" src="/static/ArtPic.jpg" class="img-responsive" >
-    					<p id = "art-description" style="color:black;">This is a temp art piece by Blah Blah and heres a description</p>
-    				</div>
-    		</div>
+          <div id="artPic" style="overflow-y:scroll;width:100%;height:400px;">
+            <center>
+            <img id = "art-photo" style="width:70%" src="https://s3.amazonaws.com/sslattorneymarketing/wp-content/uploads/sites/29/2014/04/29012755/love-3-400.jpg" class="img-responsive" >
+            </center>
+            <p id = "art-description" style="color:black;">Enter a location or click on a pointer to learn about the temporary public art installations around the City.</p>
+          </div>
+        </div>
     	</div>
       <h3 style="color:black;">Sign up for updates about the art around you: </h3>
     	<div class="col-xs-4">
@@ -69,7 +71,7 @@ function initAutocomplete() {
             console.log(photo_link)
             console.log(photo_link.substr(0,photo_link.length - 2))
             console.log(document.getElementById("art-photo"))
-            o_html = photo_link.substr(0,photo_link.length - 2) + " id = \"art-photo\" class=\"img-responsive\"/>";
+            o_html = photo_link.substr(0,photo_link.length - 2) + " id = \"art-photo\" style=\"width:70%\" class=\"img-responsive\"/>";
             document.getElementById("art-photo").outerHTML = o_html;
             document.getElementById("art-description").innerHTML = photo_description;
           };
@@ -146,13 +148,5 @@ function initAutocomplete() {
 }
 
 </script>
-<<<<<<< HEAD
-  	<h3 style="color:black;">Sign up for updates about the art around you: </h3>
-  	<div class="col-xs-4">
-  		<form class="form-inline" role="form" id="user" method="POST">
-  			<input type="email" class="form-control" id="email_form" placeholder="Enter email" name="email_form">
-        		<button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div>
   </div>
 </body>
