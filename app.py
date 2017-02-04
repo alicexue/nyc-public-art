@@ -15,27 +15,9 @@ columnsthis = ['Email', 'Address']
 def homepage():
     if request.method == "GET":
         results = data.get_data()
-        names = []
-        artists = []
-        from_dates = []
-        to_dates = []
-        latitudes = []
-        longitudes = []
-        descriptions = []
-        boroughs = []
-
-#        for facility in results:
-#            names.append(facility['name'])
-#            artists.append(facility['artist'])
-#            from_dates.append(facility['from_date'])
-#            to_dates.append(facility['to_date'])
-#            latitudes.append(facility['lat'])
-#            longitudes.append(facility['lng'])
-#            descriptions.append(facility['description'])
-#            boroughs.append(facility['borough'])
-#        return render_template("index.html", facilities = results, names = names, artists = artists, from_dates = from_dates, to_dates = to_dates, longitudes = longitudes, latitudes = latitudes, descriptions = descriptions, boroughs = boroughs)
         return render_template("index.html", facilities = results)
     else:
+        results = data.get_data()
         email = request.form['email_form']
        # df2 = df.append({'Email': email, 'Address': "placeholder address"}, ignore_index=True)
         #print df2
