@@ -1,3 +1,6 @@
+#PubArt
+## By: [Alice Xue](https://github.com/alicexue), [Nellie Spektor](https://github.com/nspektor) , [Benjamin Most](https://github.com/themost1), and [Sanford Miller](https://github.com/Sanford137)
+
 ## Inspiration
 We've all been influenced by art throughout our lives -- in museums, in homes, and most importantly, in nature. We aimed to make the beauty of art, especially temporary exhibits, more accessible to everyone.
 
